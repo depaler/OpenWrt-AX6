@@ -994,7 +994,7 @@ jobs:
           sed -i -n '/CONFIG_PACKAGE_kmod/p' .config
           echo CONFIG_IB=y >> .config
           echo CONFIG_IB_STANDALONE=y >> .config
-          cat $GITHUB_WORKSPACE/config/target.config-${{ github.event.inputs.device }} >> $OPENWRT_ROOT_PATH/.config
+          cat $GITHUB_WORKSPACE/config/target-${{ github.event.inputs.device }}.config >> $OPENWRT_ROOT_PATH/.config
           cat $GITHUB_WORKSPACE/config/image.config >> $OPENWRT_ROOT_PATH/.config
           make defconfig
           sed -i -e  "/^CONFIG_[a-zA-Z0-9]\{1,99\}_IMAGES=y$/s/=y/=cmzjnot/g" -e "/^CONFIG_GRUB_IMAGES=cmzjnot$/s/=cmzjnot/=y/g" -e "/^CONFIG_[a-zA-Z0-9]\{1,99\}_IMAGES=cmzjnot$/s/=cmzjnot/=n/g" .config
