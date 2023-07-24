@@ -46,7 +46,7 @@ on:
       device:    
         description: 'device'
         required: true
-        default: ''
+        default: 'AX6'
 permissions:
   contents: write
   discussions: write
