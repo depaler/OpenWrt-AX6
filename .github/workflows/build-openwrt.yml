@@ -247,7 +247,7 @@ jobs:
         id: target
         working-directory:  ${{ env.DOWNLOAD_ROOT_PATH }}/openwrt
         run: |
-          cat $GITHUB_WORKSPACE/config/target${{ github.event.inputs.device }}.config >> $DOWNLOAD_ROOT_PATH/openwrt/.config
+          cat $GITHUB_WORKSPACE/config/target-${{ github.event.inputs.device }}.config >> $DOWNLOAD_ROOT_PATH/openwrt/.config
           make defconfig
           echo target=$(sed -n '/CONFIG_TARGET_BOARD/p' .config | sed -e 's/CONFIG_TARGET_BOARD\=\"//' -e 's/\"//') >> "$GITHUB_OUTPUT"
           echo subtarget=$(sed -n '/CONFIG_TARGET_SUBTARGET/p' .config | sed -e 's/CONFIG_TARGET_SUBTARGET\=\"//' -e 's/\"//') >> "$GITHUB_OUTPUT"
@@ -417,7 +417,7 @@ jobs:
       - name: 加载自定义配置并生成配置文件
         working-directory: ${{ env.OPENWRT_ROOT_PATH }}
         run: |
-          cat $GITHUB_WORKSPACE/config/target${{ github.event.inputs.device }}.config >> $OPENWRT_ROOT_PATH/.config
+          cat $GITHUB_WORKSPACE/config/target-${{ github.event.inputs.device }}.config >> $OPENWRT_ROOT_PATH/.config
           cat $GITHUB_WORKSPACE/config/luci.config >> $OPENWRT_ROOT_PATH/.config
           cat $GITHUB_WORKSPACE/config/utilities.config >> $OPENWRT_ROOT_PATH/.config
           cat $GITHUB_WORKSPACE/config/network.config >> $OPENWRT_ROOT_PATH/.config
