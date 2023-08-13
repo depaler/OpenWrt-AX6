@@ -301,15 +301,11 @@ jobs:
       - name: 克隆源代码
         working-directory:  ${{ env.WORKSPACE_ROOT_PATH }}
         run: |
-          git clone https://git.openwrt.org/openwrt/openwrt.git
+          git clone https://github.com/hanwckf/immortalwrt-mt798x
           cd openwrt
           export OPENWRT_ROOT_PATH="$(pwd)"
           echo "OPENWRT_ROOT_PATH=$OPENWRT_ROOT_PATH" >> $GITHUB_ENV
           cat $GITHUB_ENV >> $GITHUB_WORKSPACE/build1_ENV
-
-      - name: 切换标签/分支
-        working-directory: ${{ env.OPENWRT_ROOT_PATH }}
-        run: git checkout $(sed -n '/openwrt_tag\/branch/p' $GITHUB_WORKSPACE/config/${{ matrix.config }}/OpenWrt-K/compile.config | sed -e 's/.*=//')
 
       - name: 复制cmzj_package
         working-directory: ${{ env.WORKSPACE_ROOT_PATH }}
