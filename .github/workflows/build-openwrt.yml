@@ -302,7 +302,7 @@ jobs:
         working-directory:  ${{ env.WORKSPACE_ROOT_PATH }}
         run: |
           git clone https://github.com/hanwckf/immortalwrt-mt798x
-          cd openwrt
+          cd immortalwrt-mt798x
           export OPENWRT_ROOT_PATH="$(pwd)"
           echo "OPENWRT_ROOT_PATH=$OPENWRT_ROOT_PATH" >> $GITHUB_ENV
           cat $GITHUB_ENV >> $GITHUB_WORKSPACE/build1_ENV
